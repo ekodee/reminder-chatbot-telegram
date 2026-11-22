@@ -82,5 +82,10 @@ class TestAttendanceReminderBot(unittest.TestCase):
 
 
 
+    def test_send_reminder_script_exists(self):
+        send_script = Path(__file__).resolve().parent.parent / "send_reminder.py"
+        self.assertTrue(send_script.exists())
+
+
 if __name__ == "__main__":
     unittest.main()
