@@ -44,15 +44,14 @@ def main() -> None:
         logger.error("TELEGRAM_BOT_TOKEN belum diatur di file .env!")
         sys.exit(1)
 
-    # Jika berjalan di Cloud hosting (Render/Koyeb/Railway) yang menyediakan variabel PORT:
-    port_env = os.getenv("PORT")
-    if port_env:
-        try:
-            port = int(port_env)
-            thread = threading.Thread(target=start_dummy_health_server, args=(port,), daemon=True)
-            thread.start()
-        except Exception as e:
-            logger.warning("Gagal memulai health server: %s", e)
+    # Selalu jalankan dummy health server ringan pada port 7860 (default Hugging Face Spaces) atau PORT
+    port_env = os.getenv("PORT", "7860")
+    try:
+        port = int(port_env)
+        thread = threading.Thread(target=start_dummy_health_server, args=(port,), daemon=True)
+        thread.start()
+    except Exception as e:
+        logger.warning("Gagal memulai health server: %s", e)
 
     logger.info("Menginisialisasi Attendance Reminder Bot...")
     application = ApplicationBuilder().token(token).build()
