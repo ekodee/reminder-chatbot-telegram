@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: attendance-bot-reminder
+    env: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: python main.py
+    envVars:
+      - key: TELEGRAM_BOT_TOKEN
+        sync: false
+      - key: TARGET_CHAT_ID
+        sync: false
+      - key: ABSEN_URL
+        value: https://monev.maganghub.kemnaker.go.id
+      - key: TIMEZONE
+        value: Asia/Jakarta
+      - key: WORK_DAYS_ONLY
+        value: "true"
