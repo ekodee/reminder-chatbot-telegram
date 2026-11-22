@@ -41,24 +41,24 @@ class TestAttendanceReminderBot(unittest.TestCase):
 
     def test_morning_reminder(self):
         text, markup = get_morning_reminder()
-        self.assertIn("08:40 WIB", text)
-        self.assertIn("FOTO PAGI", text)
+        self.assertIn("GOOD MORNING", text)
+        self.assertIn("Foto Pagi", text)
         self.assertIsNone(markup)
 
     def test_attendance_reminder(self):
         text, markup = get_attendance_reminder()
-        self.assertIn("17:00 WIB", text)
-        self.assertIn("ABSEN KANTOR", text)
+        self.assertIn("TIME TO CHECK OUT", text)
+        self.assertIn("Absensi Kantor", text)
         self.assertIsNotNone(markup)
         # Verify inline keyboard has the attendance link button
         button = markup.inline_keyboard[0][0]
         self.assertEqual(button.url, "https://monev.maganghub.kemnaker.go.id")
-        self.assertIn("Buka Link Absensi", button.text)
+        self.assertIn("Portal Absensi", button.text)
 
     def test_evening_photo_reminder(self):
         text, markup = get_evening_photo_reminder()
-        self.assertIn("17:30 WIB", text)
-        self.assertIn("FOTO ABSEN PULANG", text)
+        self.assertIn("THAT'S A WRAP", text)
+        self.assertIn("Foto Absen Pulang", text)
         self.assertIsNone(markup)
 
     def test_is_workday(self):
