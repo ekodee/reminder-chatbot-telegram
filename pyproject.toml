@@ -1,0 +1,6 @@
+[project]
+name = "reminder-chatbot-telegram"
+version = "1.0.0"
+
+[tool.vercel]
+entrypoint = "api.send:handler"

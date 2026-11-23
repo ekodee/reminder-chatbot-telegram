@@ -134,3 +134,9 @@ class handler(BaseHTTPRequestHandler):
     def log_message(self, format, *args):
         # Mute default noisy stdout logging
         pass
+
+
+# Alias untuk fleksibilitas deteksi Vercel runtime
+app = handler
+application = handler
+
