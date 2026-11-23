@@ -86,6 +86,11 @@ class TestAttendanceReminderBot(unittest.TestCase):
         send_script = Path(__file__).resolve().parent.parent / "send_reminder.py"
         self.assertTrue(send_script.exists())
 
+    def test_vercel_api_and_secret(self):
+        api_file = Path(__file__).resolve().parent.parent / "api" / "send.py"
+        self.assertTrue(api_file.exists())
+        self.assertTrue(len(config.CRON_SECRET) > 0)
+
 
 if __name__ == "__main__":
     unittest.main()
