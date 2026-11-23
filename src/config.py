@@ -15,6 +15,7 @@ class Config:
     ABSEN_URL: str = os.getenv("ABSEN_URL", "https://monev.maganghub.kemnaker.go.id").strip()
     TIMEZONE: str = os.getenv("TIMEZONE", "Asia/Jakarta").strip()
     WORK_DAYS_ONLY: bool = os.getenv("WORK_DAYS_ONLY", "true").lower() in ("true", "1", "yes")
+    CRON_SECRET: str = os.getenv("CRON_SECRET", "attendance_secret_2026").strip()
 
     @classmethod
     def set_target_chat_id(cls, chat_id: str) -> None:
